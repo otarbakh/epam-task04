@@ -52,12 +52,12 @@ resource "azurerm_network_security_rule" "http" {
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
-  source_port_range            = "*"
-  destination_port_range       = "80"
-  source_address_prefix        = "*"
-  destination_address_prefix   = "*"
-  resource_group_name          = azurerm_resource_group.rg.name
-  network_security_group_name  = azurerm_network_security_group.nsg.name
+  source_port_range           = "*"
+  destination_port_range      = "80"
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
+  resource_group_name         = azurerm_resource_group.rg.name
+  network_security_group_name = azurerm_network_security_group.nsg.name
 }
 
 resource "azurerm_network_security_rule" "ssh" {
@@ -66,12 +66,12 @@ resource "azurerm_network_security_rule" "ssh" {
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
-  source_port_range            = "*"
-  destination_port_range       = "22"
-  source_address_prefix        = "*"
-  destination_address_prefix   = "*"
-  resource_group_name          = azurerm_resource_group.rg.name
-  network_security_group_name  = azurerm_network_security_group.nsg.name
+  source_port_range           = "*"
+  destination_port_range      = "22"
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
+  resource_group_name         = azurerm_resource_group.rg.name
+  network_security_group_name = azurerm_network_security_group.nsg.name
 }
 
 # Network Interface
@@ -85,7 +85,7 @@ resource "azurerm_network_interface" "nic" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.subnet.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id           = azurerm_public_ip.pip.id
+    public_ip_address_id          = azurerm_public_ip.pip.id
   }
 }
 
@@ -97,12 +97,12 @@ resource "azurerm_network_interface_security_group_association" "nsg_assoc" {
 
 # Linux Virtual Machine
 resource "azurerm_linux_virtual_machine" "vm" {
-  name                = var.vm_name
-  resource_group_name = azurerm_resource_group.rg.name
-  location            = azurerm_resource_group.rg.location
-  size                = var.vm_size
-  admin_username      = var.admin_username
-  admin_password      = var.vm_password
+  name                  = var.vm_name
+  resource_group_name   = azurerm_resource_group.rg.name
+  location              = azurerm_resource_group.rg.location
+  size                  = var.vm_size
+  admin_username        = var.admin_username
+  admin_password        = var.vm_password
   network_interface_ids = [azurerm_network_interface.nic.id]
 
   os_disk {
@@ -125,10 +125,10 @@ resource "azurerm_linux_virtual_machine" "vm" {
   # Install Nginx using remote-exec
   provisioner "remote-exec" {
     connection {
-      type        = "ssh"
-      host        = azurerm_public_ip.pip.ip_address
-      user        = var.admin_username
-      password    = var.vm_password
+      type     = "ssh"
+      host     = azurerm_public_ip.pip.ip_address
+      user     = var.admin_username
+      password = var.vm_password
     }
 
     inline = [
