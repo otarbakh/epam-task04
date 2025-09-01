@@ -99,6 +99,8 @@ resource "azurerm_linux_virtual_machine" "vm" {
   size                = var.vm_size
   admin_username      = var.admin_username
   admin_password      = var.vm_password
+  disable_password_authentication = false   # <- allow password login
+
   network_interface_ids = [
     azurerm_network_interface.nic.id
   ]
@@ -111,7 +113,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   source_image_reference {
     publisher = "Canonical"
     offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "22_04-lts"
+    sku       = "22_04-lts"      # <- Ubuntu 22.04 LTS
     version   = "latest"
   }
 
