@@ -1,8 +1,3 @@
-
-provider "azurerm" {
-  features {}
-}
-
 # Resource Group
 resource "azurerm_resource_group" "rg" {
   name     = var.rg_name
@@ -140,8 +135,4 @@ resource "azurerm_linux_virtual_machine" "vm" {
   }
 }
 
-# Outputs
-output "vm_public_ip" {
-  value = azurerm_public_ip.pip.ip_address
-}
 
