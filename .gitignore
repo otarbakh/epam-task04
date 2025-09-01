@@ -9,9 +9,9 @@ crash.log
 .terraform/
 
 # Override files (local variable overrides)
-*.tfvars
+*.tfvars      # ignore all tfvars files
 
-# Sensitive files (like your vm password)
+# Sensitive files (like your VM password)
 secret.tfvars
 *.env
 
