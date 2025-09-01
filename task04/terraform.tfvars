@@ -1,0 +1,6 @@
+location       = "eastus2"
+address_space  = "10.90.0.0/16"
+subnet_prefix  = "10.90.1.0/24"
+admin_username = "otaradmin"
+dns_name_label = "cmaz-wbdw4cma-mod4-nginx"
+vm_password    = "Otar@12345DevOps"
