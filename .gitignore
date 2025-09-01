@@ -1,0 +1,20 @@
+# Terraform state files
+*.tfstate
+*.tfstate.backup
+
+# Crash logs
+crash.log
+
+# Terraform directories
+.terraform/
+
+# Override files (local variable overrides)
+*.tfvars
+
+# Sensitive files (like your vm password)
+secret.tfvars
+*.env
+
+# OS files
+.DS_Store
+Thumbs.db
