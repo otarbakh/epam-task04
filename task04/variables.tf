@@ -1,5 +1,5 @@
 variable "location" {
-  description = "Azure region where resources will be created"
+  description = "Azure region where resources will be deployed"
   type        = string
   default     = "westeurope"
 }
@@ -7,91 +7,91 @@ variable "location" {
 variable "admin_username" {
   description = "Admin username for the virtual machine"
   type        = string
-  default     = "adminuser"
+  default     = "otaradmin"
 }
 
 variable "vm_password" {
-  description = "Admin password for the virtual machine"
+  description = "Admin password for the Linux VM (must satisfy Azure Linux password policy)"
   type        = string
   sensitive   = true
 }
 
 variable "resource_group_name" {
-  description = "Name of the resource group"
+  description = "Name of the Azure Resource Group"
   type        = string
-  default     = "cmaz-f4p05tns-mod4-rg"
+  default     = "cmaz-wbdw4cma-mod4-rg"
 }
 
 variable "vnet_name" {
-  description = "Name of the virtual network"
+  description = "Name of the Virtual Network (VNet)"
   type        = string
-  default     = "cmaz-f4p05tns-mod4-vnet"
+  default     = "cmaz-wbdw4cma-mod4-vnet"
 }
 
 variable "subnet_name" {
-  description = "Name of the subnet"
+  description = "Name of the subnet within the VNet"
   type        = string
   default     = "frontend"
 }
 
 variable "nic_name" {
-  description = "Name of the network interface"
+  description = "Name of the Network Interface Card (NIC) for the VM"
   type        = string
-  default     = "cmaz-f4p05tns-mod4-nic"
+  default     = "cmaz-wbdw4cma-mod4-nic"
 }
 
 variable "nsg_name" {
-  description = "Name of the network security group"
+  description = "Name of the Network Security Group (NSG)"
   type        = string
-  default     = "cmaz-f4p05tns-mod4-nsg"
+  default     = "cmaz-wbdw4cma-mod4-nsg"
 }
 
 variable "http_rule_name" {
-  description = "Name of HTTP NSG rule"
+  description = "Name of the NSG inbound HTTP rule"
   type        = string
   default     = "AllowHTTP"
 }
 
 variable "ssh_rule_name" {
-  description = "Name of SSH NSG rule"
+  description = "Name of the NSG inbound SSH rule"
   type        = string
   default     = "AllowSSH"
 }
 
 variable "public_ip_name" {
-  description = "Name of the public IP"
+  description = "Name of the Public IP for the VM"
   type        = string
-  default     = "cmaz-f4p05tns-mod4-pip"
+  default     = "cmaz-wbdw4cma-mod4-pip"
 }
 
 variable "vm_name" {
-  description = "Name of the virtual machine"
+  description = "Name of the Virtual Machine"
   type        = string
-  default     = "cmaz-f4p05tns-mod4-vm"
+  default     = "cmaz-wbdw4cma-mod4-vm"
 }
 
 variable "dns_label" {
-  description = "DNS label for public IP"
+  description = "DNS name label for the Public IP"
   type        = string
-  default     = "cmaz-f4p05tns-mod4-nginx"
+  default     = "cmaz-wbdw4cma-mod4-nginx"
 }
 
-variable "creator_email" {
-  description = "Email of the creator for tagging"
+variable "vm_size" {
+  description = "Size (SKU) of the VM"
   type        = string
-  default     = "tani_bekeshev@epam.com"
+  default     = "Standard_F2s_v2"
 }
 
 variable "tags" {
-  description = "Tags to apply to resources"
+  description = "Tags to assign to all resources"
   type        = map(string)
   default = {
-    Creator = "tani_bekeshev@epam.com"
+    Creator = "otar_bakhtadze@epam.com"
   }
 }
 
 variable "ip_configuration_name" {
-  description = "Name of the IP configuration"
+  description = "Name of the IP configuration for NIC"
   type        = string
   default     = "internal"
 }
