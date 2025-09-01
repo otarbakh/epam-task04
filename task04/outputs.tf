@@ -4,6 +4,6 @@ output "vm_public_ip" {
 }
 
 output "vm_fqdn" {
-  description = "FQDN of the VM"
+  description = "Fully Qualified Domain Name (FQDN) of the VM"
   value       = azurerm_public_ip.pip.fqdn
 }

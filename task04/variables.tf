@@ -64,7 +64,7 @@ variable "admin_username" {
 }
 
 variable "vm_password" {
-  description = "Admin password for the Linux VM (must satisfy Azure Linux password policy)"
+  description = "Admin password for the Linux VM (will be entered interactively)"
   type        = string
   sensitive   = true
 }
@@ -87,4 +87,10 @@ variable "tags" {
   default = {
     Creator = "otar_bakhtadze@epam.com"
   }
+}
+
+variable "nsg_allow_ports" {
+  description = "List of allowed ports for NSG rules"
+  type        = list(string)
+  default     = ["AllowHTTP", "AllowSSH"]
 }
